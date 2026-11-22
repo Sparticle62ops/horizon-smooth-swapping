@@ -1,14 +1,11 @@
-This port of Polymorph to Rust for Horizon is an exact 1:1 translation of the
-upstream Java by Illusive Soulworks.
+Smooth Swapping for Horizon
+Copyright (c) 2026 sparticle
 
-Upstream copyright (C) 2020-2022 Illusive Soulworks, licensed under the GNU
-Lesser General Public License, Version 3.0:
-https://www.gnu.org/licenses/lgpl-3.0.txt
-Upstream: https://github.com/IllusiveSoulworks/Polymorph
-Upstream mod page: https://modrinth.com/mod/polymorph
+A 1:1 port of Smooth Swapping (https://modrinth.com/mod/smooth-swapping),
+Copyright (c) Schauweg, licensed under the GNU Lesser General Public
+License version 3, and this port is version 3 only. It carries
+the upstream license and credit per the port policy.
 
-The Rust translation carries the same LGPL-3.0 license and credits the
-upstream authors in every translated file header.
                    GNU LESSER GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
 

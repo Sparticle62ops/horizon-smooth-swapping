@@ -1,0 +1,46 @@
+id = "smoothswapping_sparticle"
+name = "Smooth Swapping"
+version = "1.0.1"
+description = "Exact 1:1 Rust translation of [Smooth Swapping](https://modrinth.com/mod/smooth-swapping)\n(Schauweg, LGPL-3.0-only, branch 26.3/dev @88e2988) for Horizon.\n\nUpstream logic carried 1:1 in `smoothswapping/runtime.rs` as a Horizon\nclient runtime splice (`crates/horizon-client/src/game.rs`): Vec2 (including\nthe Java `=-` negation quirk), SwapStacks, the swaps trio (InventorySwap,\nItemToCursorInventorySwap, ItemToItemInventorySwap) behind the AnySwap enum,\nthe SmoothSwapping state object (serde_json in place of Gson; snake_case\nfield naming and pretty printing match upstream), SwapUtil (quadrants,\ni2i/i2c assignment, hasArrived), the CatmullRomWidget config set, the config\nmanager, and the mixin set. Engine injection points are wired through\n`[[native.mixin]]` rows; see the README for the wiring state.\n\nPorted by sparticle.\n\n## License\n\nUpstream Smooth Swapping is LGPL-3.0-only, Copyright (c) Schauweg. This\nport carries the upstream license and credit per the port policy.\n\nPinned to Horizon f00125f61f794aaa3d4e950d301f353b35b6ee3d and\nhorizon-mixins e59da9094f0c2fdda6c627fe9eff22dec6a906f0; exact 1:1 Rust port\ntested against those revisions.\n\nLicence: LGPL-3.0-only. Source: https://github.com/Sparticle62ops/horizon-smooth-swapping\n"
+authors = ["sparticle", "Schauweg"]
+license = "LGPL-3.0-only"
+api = "0.2"
+side = "both"
+capabilities = ["registries"]
+
+[native]
+game = "26.3"
+horizon = "f00125f61f794aaa3d4e950d301f353b35b6ee3d"
+mixins = "e59da9094f0c2fdda6c627fe9eff22dec6a906f0"
+
+[[native.module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "smoothswapping"
+source = "src/runtime.rs"
+
+[[native.module]]
+id = "glue"
+file = "crates/horizon-client/src/game.rs"
+name = "smoothswapping_glue"
+source = "src/glue.rs"
+
+[[native.mixin]]
+id = "smoothswapping_init"
+target = "horizon_client::game::Game<'_>::new"
+kind = "head"
+helper = "src/mixins/game_init.rs"
+
+[[native.mixin]]
+id = "smoothswapping_draw_item"
+target = "horizon_client::game::interface::inventory_slots::Game<'_>::draw_item"
+kind = "head"
+cancellable = true
+helper = "src/mixins/draw_item.rs"
+
+[[native.mixin]]
+id = "smoothswapping_draw_slot_item"
+target = "horizon_client::game::interface::inventory_slots::Game<'_>::draw_slot_item"
+kind = "head"
+cancellable = true
+helper = "src/mixins/draw_slot_item.rs"

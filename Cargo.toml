@@ -1,11 +1,8 @@
 [package]
-name = "horizon-mod-smooth-swapping"
-version = "1.0.0"
-edition = "2021"
-license = "LGPL-3.0-only"
-
-[lib]
-path = "src/lib.rs"
+name = "mod-smoothswapping"
+version = "1.0.1"
+edition = "2024"
 
 [dependencies]
+horizon-mod-api = { path = ".horizon/sdk/api/crates/horizon-mod-api" }
 serde_json = "1"

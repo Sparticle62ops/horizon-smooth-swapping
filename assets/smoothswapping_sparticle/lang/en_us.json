@@ -1,0 +1,8 @@
+{
+  "smoothswapping_sparticle.toggle": "Toggle Mod",
+  "smoothswapping_sparticle.toggle.description": "Turns the swap animations on or off.",
+  "smoothswapping_sparticle.animation_speed": "Animation Speed",
+  "smoothswapping_sparticle.animation_speed.description": "How fast the swap animations play.",
+  "smoothswapping_sparticle.curve_points": "Curve Points",
+  "smoothswapping_sparticle.curve_points.description": "How many points the swap curves are sampled at."
+}
